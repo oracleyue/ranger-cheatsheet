@@ -1,0 +1,204 @@
+\documentclass[fontsize=9pt, paper=letter, headings=normal, landscape]{scrartcl}
+% This is a template (with demo texts) to create cheat sheet via LaTeX.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times,helvet}    % charter; newtxtext/newtxmath
+\usepackage[scaled=0.95]{inconsolata}
+
+\RedeclareSectionCommands[beforeskip=-.5\baselineskip,
+afterskip=.1\baselineskip]{section,subsection,subsubsection}
+
+\usepackage[margin=0.25in]{geometry}
+\usepackage{tabularx}
+\usepackage{multicol}\usepackage{enumitem}
+\usepackage{etoolbox, letltxmacro}
+
+\setlength\parindent{0pt}
+\setlength\columnsep{15pt}
+
+% define a commandlist environment based on description
+\newenvironment{commandlist}{\begin{description}[noitemsep]}{\end{description}}
+\AtBeginEnvironment{commandlist}{%
+  \LetLtxMacro{\commanditem}{\item}
+  \let\olditem\item
+  \renewcommand\item[1][]{\olditem[{#1}]\raggedright\dotfill}}%
+\addtokomafont{descriptionlabel}{\ttfamily\mdseries}
+\newenvironment{notes}{\vspace*{10mm}\small}{}
+
+\begin{document}
+
+\section*{Ranger Cheat Sheet}
+\begin{multicols*}{3}
+
+  % ---------------------------------------------------------
+  % COLUMN 1
+  % ---------------------------------------------------------
+  \subsection*{Navigation}
+
+  \begin{commandlist}
+  \item[Arrows or h/j/k/l] vim-like keys to go left/down/up/right
+  \item[l] open current file
+  \item[r] call function \texttt{:open\_with} if no default app
+
+  \item[Ctrl-b or PageUp] go up a page
+  \item[Ctrl-u or K] go up half page
+  \item[Ctrl-f or PageDown] go down a page
+  \item[Ctrl-d or J] go down half page
+
+  \item[HOME or gg] move to top
+  \item[END or G] move to bottom
+  \end{commandlist}
+
+  \begin{commandlist}
+  \item[cd] change the working directory to specific directory
+  \item[gh] change the working directory to your home
+  \end{commandlist}
+
+  \begin{commandlist}
+  \item[H] history move back
+  \item[L] history move forward
+  \end{commandlist}
+
+  \subsection*{Showing/marking/sorting files}
+
+  \begin{commandlist}
+  \item[zh OR BACKSPACE] show hidden files
+  \item[SPACE] mark a file/directory
+  \item[v] mark all files/directories; revert marking
+  \item[uv] unmark all selected files/directories
+  \end{commandlist}
+
+  Sorting operations starts with \texttt{o} key.  Just press \texttt{o} and
+  choose preferred sorting option.
+
+  \subsection*{Files operations}
+
+  \begin{commandlist}
+  \item[yy] copy
+  \item[ya] add files/directories to current \emph{copy}
+  \item[yr] remove files/directories from current \emph{copy}
+  \end{commandlist}
+
+  \begin{commandlist}
+  \item[dd] cut
+  \item[da] add files/directories to current 'cut'
+  \item[dr] remove files/directories from current 'cut'
+  \end{commandlist}
+
+  \begin{commandlist}
+  \item[pp] paste copied/cutted files
+  \item[po] to paste file with overwriting
+  \end{commandlist}
+
+  Hint: After typing the first letter of operation you'll see all options
+
+  \begin{commandlist}
+  \item[DELETE] delete selected files/directories
+  \item[cw] rename a file/directory
+  \item[I] change name of file/directory, from the beginning
+  \item[A] change name of file/directory, from the end
+  \end{commandlist}
+
+  \subsection*{Search}
+
+  \begin{commandlist}
+  \item[/ \textit{OR} f] search a file/directory
+  \item[n] search next file/directory
+  \item[N] search previous file/directory
+  \end{commandlist}
+
+  \vspace*{\fill}
+  \columnbreak
+  % ---------------------------------------------------------
+  % COLUMN 2
+  % ---------------------------------------------------------
+
+  \subsection*{Tabs}
+
+  \begin{commandlist}
+  \item[Ctrl-n or gn] open new tab (in your home)
+  \item[gc] close current tab
+  \item[TAB or gt] move to next tab
+  \item[Shift-TAB or gT] move to previous tab
+  \item[Alt-Num] switch to tab ``Num''
+  \end{commandlist}
+
+
+  \subsection*{Bookmarks}
+
+  \begin{commandlist}
+  \item[mKey] create bookmark \texttt{Key}
+  \item[{\textasciigrave}Key] jump to bookmarked location \texttt{Key}
+  \item[\textasciigrave\textasciigrave] jump back
+  \end{commandlist}
+
+  \subsection*{Ranger commands}
+
+  \begin{commandlist}
+  \item[:delete]deletes selected files
+  \item[:rename]renames current file
+  \item[:mkdir] create directory
+  \item[:cd]    change current path
+  \end{commandlist}
+
+  \subsection*{Using bash shell}
+
+  \begin{commandlist}
+  \item[S] pause ranger and open bash shell
+  \item[exit] return to ranger from bash shell
+  \end{commandlist}
+
+  \begin{commandlist}
+  \item[s or :shell] run bash command inside ranger window
+  \item[] For example, \texttt{:shell chmod a+rw FILENAME}.
+  \end{commandlist}
+
+  Hint: You can use macros from below instead of actual filenames.
+  For example, \texttt{:shell chmod a+rw \%f}
+
+  \subsection*{Using macros}
+
+  \begin{commandlist}
+  \item[\%s] all selected files
+  \item[\%f] highlighted file only
+  \item[\%d] the path of the current directory
+  \end{commandlist}
+
+  \subsection*{Miscellanies}
+
+  \begin{commandlist}
+  \item[q] quit
+  \item[s] launch shell
+  \item[?] help
+  \end{commandlist}
+
+  \vspace*{\fill}
+  \columnbreak
+  % ---------------------------------------------------------
+  % COLUMN 3
+  % ---------------------------------------------------------
+
+  \subsection*{User-defined keybindings}
+
+  Note: these keybindings rely on the author's \texttt{rc.conf}. If you
+  like to use these bindings, you have to configure them first.
+
+  \begin{commandlist}
+  \item[gw] go to \texttt{\textasciitilde/Public/Dropbox/Workspace/Matlab}
+  \item[ga] go to \texttt{\textasciitilde/Public/Dropbox/Academia}
+  \item[gp] go to \texttt{\textasciitilde/Papers}
+  \item[gr] go to \texttt{\textasciitilde/Books/References}
+  \item[em] open file with Emacs in light theme
+  \item[ec] open file with Emacs in dark theme
+  \end{commandlist}
+
+  \begin{notes}
+    $^*$The configuration files of \texttt{ranger} are in
+    \texttt{\textasciitilde/.config/ranger/}, where \texttt{rc.conf} defines
+    the keybindings and \texttt{rifle.conf} sets how files should be opened
+    or executed.
+  \end{notes}
+
+\end{multicols*}
+\end{document}

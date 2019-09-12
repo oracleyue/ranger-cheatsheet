@@ -1,0 +1,40 @@
+# temporary or backup files
+*~
+*#
+.#*
+Icon?
+**/backup/
+.projectile
+
+# auctex temporary folders
+**/auto/
+**/ltxpng/
+**/supports/
+
+# temporary files for LaTeX
+*.lot
+*.log
+*.aux
+*.out
+*.toc
+*.fls
+*.synctex.gz
+*.spl
+*.brf
+*.blg
+*.bbl
+*.pyg
+*.nav
+*.snm
+*.fdb_latexmk
+*.idx
+*.ilg
+*.ind
+*.nlo
+*.nls
+
+# commented files
+**/comments/
+
+# mac osx system files
+**/.DS_Store
