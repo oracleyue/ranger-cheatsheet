@@ -25,6 +25,7 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \renewcommand\item[1][]{\olditem[{#1}]\raggedright\dotfill}}%
 \addtokomafont{descriptionlabel}{\ttfamily\mdseries}
 \newenvironment{notes}{\vspace*{10mm}\small}{}
+\newcommand{\OR}{\underline{or} }
 
 \begin{document}
 
@@ -37,17 +38,17 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \subsection*{Navigation}
 
   \begin{commandlist}
-  \item[Arrows or h/j/k/l] vim-like keys to go left/down/up/right
+  \item[h/j/k/l \OR ArrowKeys] vim-like keys to go left/down/up/right
   \item[l] open current file
   \item[r] call function \texttt{:open\_with} if no default app
 
-  \item[Ctrl-b or PageUp] go up a page
-  \item[Ctrl-u or K] go up half page
-  \item[Ctrl-f or PageDown] go down a page
-  \item[Ctrl-d or J] go down half page
+  \item[Ctrl-b \OR PageUp] go up a page
+  \item[Ctrl-u \OR K] go up half page
+  \item[Ctrl-f \OR PageDown] go down a page
+  \item[Ctrl-d \OR J] go down half page
 
-  \item[HOME or gg] move to top
-  \item[END or G] move to bottom
+  \item[gg \OR HOME] move to top
+  \item[G \OR END] move to bottom
   \end{commandlist}
 
   \begin{commandlist}
@@ -63,7 +64,7 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \subsection*{Showing/marking/sorting files}
 
   \begin{commandlist}
-  \item[zh OR BACKSPACE] show hidden files
+  \item[zh \OR BACKSPACE] show hidden files
   \item[SPACE] mark a file/directory
   \item[v] mark all files/directories; revert marking
   \item[uv] unmark all selected files/directories
@@ -82,8 +83,8 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
 
   \begin{commandlist}
   \item[dd] cut
-  \item[da] add files/directories to current 'cut'
-  \item[dr] remove files/directories from current 'cut'
+  \item[da] add files/directories to current \emph{cut}
+  \item[dr] remove files/directories from current \emph{cut}
   \end{commandlist}
 
   \begin{commandlist}
@@ -103,7 +104,7 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \subsection*{Search}
 
   \begin{commandlist}
-  \item[/ \textit{OR} f] search a file/directory
+  \item[/ \OR f] search a file/directory
   \item[n] search next file/directory
   \item[N] search previous file/directory
   \end{commandlist}
@@ -117,10 +118,10 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \subsection*{Tabs}
 
   \begin{commandlist}
-  \item[Ctrl-n or gn] open new tab (in your home)
+  \item[Ctrl-n \OR gn] open new tab (in your home)
   \item[gc] close current tab
-  \item[TAB or gt] move to next tab
-  \item[Shift-TAB or gT] move to previous tab
+  \item[TAB \OR gt] move to next tab
+  \item[Shift-TAB \OR gT] move to previous tab
   \item[Alt-Num] switch to tab ``Num''
   \end{commandlist}
 
@@ -150,7 +151,7 @@ afterskip=.1\baselineskip]{section,subsection,subsubsection}
   \end{commandlist}
 
   \begin{commandlist}
-  \item[s or :shell] run bash command inside ranger window
+  \item[s \OR :shell] run bash command inside ranger window
   \item[] For example, \texttt{:shell chmod a+rw FILENAME}.
   \end{commandlist}
 
